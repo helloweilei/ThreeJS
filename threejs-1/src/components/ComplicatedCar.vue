@@ -35,9 +35,12 @@ const backWheels = frontWheels.clone();
 backWheels.position.x = 2;
 frontWheels.position.x = -2;
 const body = new THREE.Mesh(new THREE.BoxGeometry(8, 1, 3.4), mat);
+const drivingRoom = new THREE.Mesh(new THREE.CylinderGeometry(2, 2, 3.4, 3, 100, false, -Math.PI / 2, Math.PI), mat);
+drivingRoom.rotation.x = -Math.PI / 2;
 car.add(frontWheels);
 car.add(backWheels);
 car.add(body);
+car.add(drivingRoom);
 scene.add(car);
 
 // 渲染器
