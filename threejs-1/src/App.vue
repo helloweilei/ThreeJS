@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import Car from './components/ComplicatedCar.vue'
+import Lights from './components/Lights.vue'
 </script>
 
 <template>
   <!-- <HelloWorld /> -->
    <!-- <SolarSystem></SolarSystem> -->
   <!-- <SimpleCar /> -->
-   <Car></Car>
+   <!-- <Car></Car> -->
+  <Lights></Lights>
 </template>
 
 <style scoped>
