@@ -12,13 +12,18 @@ const planeGeo = new THREE.PlaneGeometry(4, 4)
 const sphere = new THREE.Mesh(sphereGeo, material)
 const plane = new THREE.Mesh(planeGeo, material.clone())
 plane.rotation.x = -0.5 * Math.PI
+plane.receiveShadow = true
 sphere.position.y = 0.5
+sphere.castShadow = true
 plane.material.color.set(0xcccccc)
 
 const aLigth = new THREE.AmbientLight(0xffffff, 0.3)
 scene.add(aLigth)
-const spotLight = new THREE.SpotLight(0xffffff, 50, 3, Math.PI / 4)
+const spotLight = new THREE.SpotLight(0xffffff, 50, 4, Math.PI / 3)
 spotLight.position.set(2, 2, 0)
+spotLight.castShadow = true
+spotLight.shadow.mapSize.width = 2048
+spotLight.shadow.mapSize.height = 2048
 const spotLightHelper = new THREE.SpotLightHelper(spotLight)
 scene.add(spotLight, spotLightHelper)
 
@@ -38,6 +43,7 @@ scene.add(camera)
 
 const renderer = new THREE.WebGLRenderer()
 renderer.setSize(innerWidth, innerHeight)
+renderer.shadowMap.enabled = true
 renderer.render(scene, camera)
 const orbitControl = new OrbitControls(camera, renderer.domElement)
 document.getElementById('app')!.appendChild(renderer.domElement)
